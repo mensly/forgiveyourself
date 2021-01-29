@@ -20,6 +20,9 @@ class MainActivity : AppCompatActivity() {
             ListService.instance.addItem(text.toString())
             input.setText("")
         }
+        findViewById<Button>(R.id.btn_clear).setOnClickListener {
+            ListService.instance.clearItems()
+        }
         findViewById<RecyclerView>(R.id.list).adapter = adapter
     }
 

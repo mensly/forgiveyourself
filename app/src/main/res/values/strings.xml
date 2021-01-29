@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Forgive Yourself</string>
-    <string name="add">Add</string>
+    <string name="btn_add">Add</string>
     <string name="hint_mistake">Enter mistake</string>
+    <string name="btn_clear">Forgive Yourself</string>
 </resources>

@@ -28,6 +28,12 @@ class ListService private constructor() {
         saveMistakes()
     }
 
+    fun clearItems() {
+        mistakes.clear()
+        listChanged.forEach { it(mistakes) }
+        saveMistakes()
+    }
+
     private fun saveMistakes() {
         sharedPreferences.edit {
             putStringSet(KEY_MISTAKES, mistakes.toSet())

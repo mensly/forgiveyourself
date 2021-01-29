@@ -19,7 +19,13 @@
         android:id="@+id/btn_add"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/add" />
+        android:text="@string/btn_add" />
+
+    <Button
+        android:id="@+id/btn_clear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_clear" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list"
