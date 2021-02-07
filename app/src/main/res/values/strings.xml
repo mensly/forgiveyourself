@@ -16,4 +16,8 @@ If you need help doing so, these numbers might be useful:</string>
     <string name="btn_us">SAMHSA</string>
     <string name="help_footer">Note: This app is not associated with the above services.</string>
     <string name="notifications">Notifications</string>
+    <string name="notif_channel">Reminder</string>
+    <string name="notif_channel_description">Show a reminder notification</string>
+    <string name="notif_text">It is time to forgive yourself</string>
+    <string name="lbl_enable_notification">Enable Notification</string>
 </resources>
