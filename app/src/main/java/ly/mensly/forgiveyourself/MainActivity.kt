@@ -56,8 +56,7 @@ class MainActivity : AppCompatActivity() {
                 return true
             }
             R.id.menu_notifications -> {
-                // TODO
-                Toast.makeText(this, "TODO", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, NotificationActivity::class.java))
                 return true
             }
         }

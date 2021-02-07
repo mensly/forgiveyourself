@@ -26,15 +26,17 @@ class NotificationService private constructor() {
 
     init {
         enabled.observeForever {
-            sharedPreferences.edit { putBoolean(KEY_ENABLED, it) }
+            sharedPreferences.edit(true) {
+                putBoolean(KEY_ENABLED, it)
+                remove(KEY_TIME)
+            }
             configureAlarm()
         }
         scheduledTime.observeForever {
-            sharedPreferences.edit { putLong(KEY_TIME, it) }
+            sharedPreferences.edit(true) { putLong(KEY_TIME, it) }
             configureAlarm()
         }
     }
-
 
     private fun loadEnabled() = sharedPreferences.getBoolean(KEY_ENABLED, false)
 
