@@ -5,6 +5,7 @@ import android.app.PendingIntent
 import android.content.Context.ALARM_SERVICE
 import android.content.Intent
 import android.preference.PreferenceManager
+import android.util.Log
 import androidx.core.content.edit
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -26,16 +27,25 @@ class NotificationService private constructor() {
 
     init {
         enabled.observeForever {
-            sharedPreferences.edit(true) {
+            sharedPreferences.edit {
                 putBoolean(KEY_ENABLED, it)
-                remove(KEY_TIME)
+                if (!it) {
+                    remove(KEY_TIME)
+                }
             }
             configureAlarm()
         }
         scheduledTime.observeForever {
-            sharedPreferences.edit(true) { putLong(KEY_TIME, it) }
+            sharedPreferences.edit { putLong(KEY_TIME, it) }
             configureAlarm()
         }
+    }
+
+    fun addOneYear() {
+        val calendar = Calendar.getInstance()
+        calendar.timeInMillis = scheduledTime.value!!
+        calendar.set(Calendar.YEAR, calendar.get(Calendar.YEAR) + 1)
+        scheduledTime.value = calendar.timeInMillis
     }
 
     private fun loadEnabled() = sharedPreferences.getBoolean(KEY_ENABLED, false)

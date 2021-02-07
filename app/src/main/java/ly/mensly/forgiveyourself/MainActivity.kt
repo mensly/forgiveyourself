@@ -1,5 +1,6 @@
 package ly.mensly.forgiveyourself
 
+import android.app.NotificationManager
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,7 +13,6 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
-
     private val adapter = MistakeAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,6 +29,11 @@ class MainActivity : AppCompatActivity() {
             ListService.instance.clearItems()
         }
         findViewById<RecyclerView>(R.id.list).adapter = adapter
+        NotificationService.instance.apply {
+            if (enabled.value == true && scheduledTime.value!! < System.currentTimeMillis()) {
+                addOneYear()
+            }
+        }
     }
 
     override fun onResume() {
