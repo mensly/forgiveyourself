@@ -3,4 +3,17 @@
     <string name="btn_add">Add</string>
     <string name="hint_mistake">Enter mistake</string>
     <string name="btn_clear">Forgive Yourself</string>
+    <string name="help">Help</string>
+    <string name="help_header">The purpose of this application is to help track your mistakes during the year.\n
+At least once a year you should forgive yourself and wipe the slate clean.\n
+You cannot edit or remove individual items, only forgive yourself by wiping the slate.\n
+If you need help doing so, these numbers might be useful:</string>
+    <string name="au">Australia:</string>
+    <string name="btn_au">BeyondBlue</string>
+    <string name="uk">UK:</string>
+    <string name="btn_uk">SupportLine</string>
+    <string name="us">USA:</string>
+    <string name="btn_us">SAMHSA</string>
+    <string name="help_footer">Note: This app is not associated with the above services.</string>
+    <string name="notifications">Notifications</string>
 </resources>

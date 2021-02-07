@@ -1,9 +1,14 @@
 package ly.mensly.forgiveyourself
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
@@ -37,5 +42,25 @@ class MainActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         ListService.instance.clearListChangedListeners()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.menu_help -> {
+                startActivity(Intent(this, HelpActivity::class.java))
+                return true
+            }
+            R.id.menu_notifications -> {
+                // TODO
+                Toast.makeText(this, "TODO", Toast.LENGTH_SHORT).show()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
