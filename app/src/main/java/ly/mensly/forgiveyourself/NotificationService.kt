@@ -38,7 +38,10 @@ class NotificationService private constructor() {
         enabled.observeForever {
             sharedPreferences.edit {
                 putBoolean(KEY_ENABLED, it)
-                if (!it) {
+                if (it) {
+                    putLong(KEY_TIME, scheduledTime.value!!)
+                }
+                else {
                     remove(KEY_TIME)
                 }
             }
