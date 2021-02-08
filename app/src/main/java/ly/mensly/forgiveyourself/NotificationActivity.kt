@@ -1,15 +1,23 @@
 package ly.mensly.forgiveyourself
 
+import android.Manifest
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Button
-import android.widget.Switch
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SwitchCompat
+import androidx.core.app.ActivityCompat
 import androidx.core.app.NavUtils
+import androidx.core.content.ContextCompat
 import java.text.SimpleDateFormat
 
+
 class NotificationActivity : AppCompatActivity() {
+    private companion object {
+        private const val NOTIFICATION_PERMISSION_CODE = 6
+    }
     private lateinit var enabled: SwitchCompat
     private lateinit var time: Button
 
@@ -22,9 +30,15 @@ class NotificationActivity : AppCompatActivity() {
         enabled.setOnCheckedChangeListener { _, isChecked -> NotificationService.instance.enabled.value = isChecked }
         time = findViewById(R.id.time)
         time.setOnClickListener {
-            DatePickerFragment.showInstance(this, NotificationService.instance.scheduledTime.value!!)
+            DatePickerFragment.showInstance(
+                this,
+                NotificationService.instance.scheduledTime.value!!
+            )
         }
         NotificationService.instance.enabled.observe(this) {
+            if (it) {
+                requestNotificationPermission()
+            }
             enabled.isChecked = it
             time.isEnabled = it
         }
@@ -39,5 +53,30 @@ class NotificationActivity : AppCompatActivity() {
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun requestNotificationPermission() {
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_NOTIFICATION_POLICY
+            ) == PackageManager.PERMISSION_GRANTED
+        ) return
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.ACCESS_NOTIFICATION_POLICY),
+                NOTIFICATION_PERMISSION_CODE
+            )
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        NotificationService.instance.enabled.value =
+            requestCode == NOTIFICATION_PERMISSION_CODE && grantResults.contains(PackageManager.PERMISSION_GRANTED)
     }
 }

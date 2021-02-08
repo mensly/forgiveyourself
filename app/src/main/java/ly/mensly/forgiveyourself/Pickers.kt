@@ -40,7 +40,7 @@ class TimePickerFragment : DialogFragment(), TimePickerDialog.OnTimeSetListener 
 
     override fun onTimeSet(view: TimePicker, hourOfDay: Int, minute: Int) {
         val c = Calendar.getInstance()
-        c.timeInMillis = NotificationService.instance.scheduledTime.value!!
+        c.timeInMillis = requireArguments().getLong(ARG_DATETIME)
         c.set(Calendar.HOUR_OF_DAY, hourOfDay)
         c.set(Calendar.MINUTE, minute)
         NotificationService.instance.scheduledTime.value = c.timeInMillis
@@ -74,7 +74,7 @@ class DatePickerFragment : DialogFragment(), DatePickerDialog.OnDateSetListener 
 
     override fun onDateSet(view: DatePicker, year: Int, month: Int, day: Int) {
         val c = Calendar.getInstance()
-        c.timeInMillis = NotificationService.instance.scheduledTime.value!!
+        c.timeInMillis = requireArguments().getLong(ARG_DATETIME)
         c.set(Calendar.YEAR, year)
         c.set(Calendar.MONTH, month)
         c.set(Calendar.DAY_OF_MONTH, day)
