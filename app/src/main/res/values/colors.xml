@@ -8,4 +8,5 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="favourite_colour">#00c89c</color>
+    <color name="favourite_purple">#9c00c8</color>
 </resources>

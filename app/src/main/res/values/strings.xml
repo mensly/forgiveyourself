@@ -21,4 +21,6 @@ If you need help doing so, these numbers might be useful:</string>
     <string name="notif_text">It is time to forgive yourself</string>
     <string name="lbl_enable_notification">Enable Notification</string>
     <string name="notifications_footer">Try to clear the list once a year. Maybe New Year, Chinese New Year, Ramadan or Yom Kippur.</string>
+    <string name="notifications_prompt">Would you like to configure a notification?</string>
+    <string name="clear_prompt">Are you sure you have forgiven yourself?</string>
 </resources>

@@ -81,7 +81,6 @@ class NotificationService private constructor() {
         }
     }
 
-
     @TargetApi(Build.VERSION_CODES.O)
     private fun createChannel(context: Context) {
         // Create the NotificationChannel
