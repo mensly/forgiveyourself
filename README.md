@@ -5,6 +5,9 @@ At least once a year you should forgive yourself and wipe the slate clean.
 You cannot edit or remove individual items, only forgive yourself by wiping the slate.
 You can optionally set a notification reminder. Maybe New Year, your birthday, Chinese New Year, Ramadan, or Yom Kippur.
 
+## Installing
+Download on [Google Play](https://play.google.com/store/apps/details?id=ly.mensly.forgiveyourself)
+
 ## Building
 Open the project in Android Studio and hit Play, alternatively run `./gradlew assembleDebug`
 
