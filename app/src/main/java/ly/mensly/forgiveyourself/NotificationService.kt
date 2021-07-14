@@ -115,7 +115,7 @@ class NotificationService private constructor() {
         return scheduledTime
     }
 
-    private fun configureAlarm() {
+    fun configureAlarm() {
         val alarmIntent = Intent(App.instance, NotificationReceiver::class.java)
         val broadcast = PendingIntent.getBroadcast(App.instance, REQUEST_CODE, alarmIntent, 0)
         alarmManager.cancel(broadcast)
@@ -123,5 +123,4 @@ class NotificationService private constructor() {
             alarmManager.set(AlarmManager.RTC_WAKEUP, scheduledTime.value ?: Long.MIN_VALUE, broadcast)
         }
     }
-
 }
